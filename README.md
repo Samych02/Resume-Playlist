@@ -14,16 +14,17 @@ Ever played a big playlist but couldn't remember the last song when you wanted t
 
 ## Installation
 
-Download the extension from the release page to the spicetify Extension folder located in:
+1- Download the extension from the release page or from this [link](https://github.com/Samych02/Playlist-Saver/releases/latest/download/playlist-saver.js).<br>
+2- Copy the downloaded file (named playlist-saver.js) to:
 | **Platform** | **Path** |
 |-----------------|----------------------------------------|
 | **MacOs/Linux** | `~/.config/spicetify/Extension` |
 | **Windows** | `%appdata%\spicetify\Extension` |
 
-Then, run the following commands:
+3- run the following commands:
 
 ```sh
-spicetify config extension playlist-saver
+spicetify config extensions playlist-saver
 spicetify apply
 ```
 
