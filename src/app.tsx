@@ -11,11 +11,9 @@ async function fetchPlaylistTracks(uri: any) {
 	return res.rows.filter((track: any) => track.playable).map((track: any) => track.link);
 }
 
-// If song is added to queue from the same playlist or from an other one,
-// the state of the saved playlist should not change
+// If song is added to queue from the same playlist or from an other one, the state of the saved playlist should not change
 function isManuallyAddedToQueue() {
 	try {
-    console.log(Spicetify.Queue.track["provider"]);
 		return Spicetify.Queue.track["provider"] == "queue";
 	} catch (TypeError) {
 		return false;
@@ -27,37 +25,29 @@ function saveCurrentSong() {
 		return;
 	}
 	let playlistURI = Spicetify.URI.fromString(Spicetify.Player.data.context["uri"]);
-	let trackURI = Spicetify.URI.fromString(Spicetify.Player.data.item.uri);
+	let currentSongIndex = Spicetify.Player.data.index.itemIndex;
 	if (playlistURI.toString()) {
-		Spicetify.LocalStorage.set(URIToString(playlistURI.toString()), trackURI.toString());
+		// This is a shower thought where i realized that it's better to save the index of the currently playing song, 
+    // this will prevent us later from fetching the playlist track list
+		Spicetify.LocalStorage.set(URIToString(playlistURI.toString()), String(currentSongIndex));
 	}
 }
 
 // TODO: Change the logic of playing the specific track in the playlist
-// TODO: handle the case where a song has many occurences in a playlist
 async function playSavedSong(uri: any) {
 	let playlistURI = Spicetify.URI.fromString(uri[0]);
-	let trackURI = Spicetify.LocalStorage.get(URIToString(playlistURI.toString()));
+	let songIndex = Spicetify.LocalStorage.get(URIToString(playlistURI.toString()));
 	// Check if playlist is not saved (aka never played)
-	if (!trackURI) {
+	if (!songIndex) {
 		Spicetify.showNotification("Playlist not saved!", false, 2000);
 		return;
 	}
-	let trackList = await fetchPlaylistTracks(playlistURI);
-	let indexOfLastPlayedSong = trackList.indexOf(trackURI);
-	// The last played song has been removed from the playlist
-	await Spicetify.Player.playUri(playlistURI.toString());
-	if (indexOfLastPlayedSong == -1) {
-		Spicetify.showNotification("The saved song has been removed from the playlist!", false, 2000);
-		return;
-	}
+  await Spicetify.Player.playUri(playlistURI.toString());
 	Spicetify.Player.removeEventListener("songchange", saveCurrentSong);
-	Spicetify.Player.pause();
-	for (let skipNumber = 0; skipNumber < indexOfLastPlayedSong; skipNumber++) {
+	for (let skipNumber = 0; skipNumber < parseInt(songIndex); skipNumber++) {
 		Spicetify.Player.next();
 	}
 	Spicetify.Player.addEventListener("songchange", saveCurrentSong);
-	Spicetify.Player.play();
 	return;
 }
 
