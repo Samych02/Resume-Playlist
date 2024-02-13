@@ -10,7 +10,6 @@ Have you ever played a playlist and wanted to resume it from the last played son
 ## Issues
 
 - Does not work with "Liked songs" playlist (can't do anything about it).
-- Might not work with a non premium account because it skip the played songs (skips are limited on non premium account).
 
 ## Installation
 
