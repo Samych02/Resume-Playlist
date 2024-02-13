@@ -1,6 +1,6 @@
 # Playlist Saver
 
-Ever played a big playlist but couldn't remember the last song when you wanted to resume the playlist at a later time? That's what this extension do.
+Have you ever played a playlist and wanted to resume it from the last played song at a later time? That's what this extension do.
 
 ## Features
 
@@ -10,7 +10,7 @@ Ever played a big playlist but couldn't remember the last song when you wanted t
 ## Issues
 
 - Does not work with "Liked songs" playlist (can't do anything about it).
-- Should change the way of playing the last song (what currently happens is that the playlist is played from the first song and then skipping songs until the saved one).
+- Might not work with a non premium account because it skip the played songs (skips are limited on non premium account).
 
 ## Installation
 
