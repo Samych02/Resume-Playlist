@@ -27,8 +27,8 @@ function saveCurrentSong() {
 	let playlistURI = Spicetify.URI.fromString(Spicetify.Player.data.context["uri"]);
 	let currentSongIndex = Spicetify.Player.data.index.itemIndex;
 	if (playlistURI.toString()) {
-		// This is a shower thought where i realized that it's better to save the index of the currently playing song, 
-    // this will prevent us later from fetching the playlist track list
+		// This is a shower thought where i realized that it's better to save the index of the currently playing song,
+		// this will prevent us later from fetching the playlist track list
 		Spicetify.LocalStorage.set(URIToString(playlistURI.toString()), String(currentSongIndex));
 	}
 }
@@ -42,7 +42,7 @@ async function playSavedSong(uri: any) {
 		Spicetify.showNotification("Playlist not saved!", false, 2000);
 		return;
 	}
-  await Spicetify.Player.playUri(playlistURI.toString());
+	await Spicetify.Player.playUri(playlistURI.toString());
 	Spicetify.Player.removeEventListener("songchange", saveCurrentSong);
 	for (let skipNumber = 0; skipNumber < parseInt(songIndex); skipNumber++) {
 		Spicetify.Player.next();
