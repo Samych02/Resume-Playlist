@@ -3,14 +3,6 @@ function URIToString(playlistID: string) {
 	return "playlistsaver-" + playlistID;
 }
 
-// Fetch a songs list of a playlist
-async function fetchPlaylistTracks(uri: any) {
-	const res = await Spicetify.CosmosAsync.get(`sp://core-playlist/v1/playlist/${uri}/rows`, {
-		policy: { link: true, playable: true },
-	});
-	return res.rows.filter((track: any) => track.playable).map((track: any) => track.link);
-}
-
 // If song is added to queue from the same playlist or from an other one, the state of the saved playlist should not change
 function isManuallyAddedToQueue() {
 	try {
