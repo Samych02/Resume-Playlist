@@ -23,7 +23,7 @@ Have you ever played a playlist and wanted to resume it from the last played son
 3- run the following commands:
 
 ```sh
-spicetify config extensions playlist-saver
+spicetify config extensions playlist-saver.js
 spicetify apply
 ```
 
