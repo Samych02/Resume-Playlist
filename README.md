@@ -17,8 +17,8 @@ Have you ever played a playlist and wanted to resume it from the last played son
 2- Copy the downloaded file (named playlist-saver.js) to:
 | **Platform** | **Path** |
 |-----------------|----------------------------------------|
-| **MacOs/Linux** | `~/.config/spicetify/Extension` |
-| **Windows** | `%appdata%\spicetify\Extension` |
+| **MacOs/Linux** | `~/.config/spicetify/Extensions` |
+| **Windows** | `%appdata%\spicetify\Extensions` |
 
 3- run the following commands:
 
