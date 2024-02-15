@@ -1,4 +1,4 @@
-# Playlist Saver
+# Resume Playlist
 
 Have you ever played a playlist and wanted to resume it from the last played song at a later time? That's what this extension do.
 
@@ -13,7 +13,7 @@ Have you ever played a playlist and wanted to resume it from the last played son
 
 ## Installation
 
-1- Download the extension from the release page or from this [link](https://github.com/Samych02/Playlist-Saver/releases/latest/download/playlist-saver.js).<br>
+1- Download the extension from the release page or from this [link](https://github.com/Samych02/Resume-Playlist/releases/latest/download/resume-playlist.js).<br>
 2- Copy the downloaded file (named playlist-saver.js) to:
 | **Platform** | **Path** |
 |-----------------|----------------------------------------|
@@ -23,7 +23,7 @@ Have you ever played a playlist and wanted to resume it from the last played son
 3- run the following commands:
 
 ```sh
-spicetify config extensions playlist-saver.js
+spicetify config extensions resume-playlist.js
 spicetify apply
 ```
 

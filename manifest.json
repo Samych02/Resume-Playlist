@@ -1,8 +1,8 @@
 {
-	"name": "playlist-saver",
+	"name": "resume-playlist",
 	"description": "Spicetify extension to resume a playlist from the last played song.",
 	"preview": "screenshot.png",
-	"main": "dist/playlist-saver.js",
+	"main": "dist/resume-playlist.js",
 	"readme": "README.md",
-	"authors": [{ "name": "samych02", "url": "https://github.com/Samych02/Playlist-Saver" }]
+	"authors": [{ "name": "samych02", "url": "https://github.com/Samych02/Resume-Playlist" }]
 }
