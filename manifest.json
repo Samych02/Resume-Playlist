@@ -1,5 +1,5 @@
 {
-	"name": "resume-playlist",
+	"name": "Resume-Playlist",
 	"description": "Spicetify extension to resume a playlist from the last played song.",
 	"preview": "screenshot.png",
 	"main": "dist/resume-playlist.js",
