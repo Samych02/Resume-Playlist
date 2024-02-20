@@ -1,6 +1,6 @@
-// Add "playlistsaver-" prefix to playlist uri to avoid any collison LocalStorage
+// Add "resumeplaylist-" prefix to playlist uri to avoid any collison in LocalStorage
 function URIToString(playlistID: string) {
-	return "playlistsaver-" + playlistID;
+	return "resumeplaylist-" + playlistID;
 }
 
 // If song is added to queue from the same playlist or from an other one, the state of the saved playlist should not change
@@ -38,9 +38,13 @@ async function playSavedSong(uri: any) {
 }
 
 // Determine if the selected item is a playlist page
-function isItemPlaylist(uri: any) {
+function shouldButtonBeDisplayed(uri: any) {
 	let playlistURI = Spicetify.URI.fromString(uri[0]);
-	return playlistURI.type == Spicetify.URI.Type.PLAYLIST || playlistURI.type == Spicetify.URI.Type.PLAYLIST_V2;
+	return (
+		playlistURI.type == Spicetify.URI.Type.PLAYLIST ||
+		playlistURI.type == Spicetify.URI.Type.PLAYLIST_V2 ||
+		playlistURI.type == Spicetify.URI.Type.ALBUM
+	);
 }
 
 async function main() {
@@ -49,7 +53,13 @@ async function main() {
 		return;
 	}
 	Spicetify.Player.addEventListener("songchange", saveCurrentSong);
-	const menuItem = new Spicetify.ContextMenu.Item("Resume playlist from last played song", playSavedSong, isItemPlaylist, "play", false);
+	const menuItem = new Spicetify.ContextMenu.Item(
+		"Resume playlist from last played song",
+		playSavedSong,
+		shouldButtonBeDisplayed,
+		"play",
+		false
+	);
 	menuItem.register();
 }
 
